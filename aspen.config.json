@@ -1,0 +1,5 @@
+{
+  "name": "Counter Demo",
+  "source": "counter"
+  // "buildDirectory": "./dist" /* Specify where the build output will go */
+}
