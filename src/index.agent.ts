@@ -1,35 +1,78 @@
-import { Agent, Aggregator } from '@aspen.cloud/agent-typings';
+import { Agent } from '@aspen.cloud/agent-typings';
+
+interface Todo {
+  id: number;
+  message: string;
+  createdAt: string;
+  done: boolean;
+  listId: string;
+}
 
 const agent: Agent = {
-  name: 'Counter Demo',
-  sourceId: 'counter',
-  aggregations: {
-    count: {
-      reducer: (count, _item) => count + 1,
-      startWith: 0,
-    } as Aggregator<number, number>,
+  name: 'Simple Todos',
+  sourceId: 'todos',
+  views: {
+    incomplete: async (params, aspen) => {
+      const all = await aspen.getView('all', params);
+      return all.filter((todo) => !todo.done);
+    },
+    all: async ({ list }, aspen) => {
+      const todos: Todo[] = [];
+      await aspen.processEvents(
+        (event) => {
+          if (event.data.type === 'todo') {
+            const todo = {
+              id: event.data.id,
+              message: event.data.message || '',
+              createdAt: event.inserted_at,
+              done: false,
+              listId: event.data.listId,
+            };
+            todos.push(todo);
+          }
+          if (event.data.type === 'status_change' && todos) {
+            const todo = todos.find((todo) => todo.id == event.data.todoId);
+            if (todo) {
+              todo.done = event.data.isDone;
+            }
+          }
+        },
+        { list },
+      );
+      return todos;
+    },
+  },
+  overviews: {
+    test: 'test',
   },
   actions: {
-    increment: async (aspen, _params) => {
-      await aspen.appendToLog('counter', {});
+    add: async ({ message, list }, aspen) => {
+      await aspen.appendToLog(
+        {
+          message,
+          id: Math.floor(Math.random() * 1e9),
+          type: 'todo',
+          listId: list,
+        },
+        {
+          list,
+        },
+      );
+      return `Added ${message}`;
     },
-    count: async (aspen, _params) => {
-      const count = await aspen.getAggregation('counter', 'count');
-      let message = '';
-
-      if (count > 10)
-        message = "Ground control to Major Tom?...We've lost contact 👨‍🚀";
-      else if (count > 8) message = 'Edge of the galaxy 🌌';
-      else if (count > 6) message = 'In orbit 🛰️';
-      else if (count > 4) message = "Exiting Earth's atmosphere 🌎";
-      else if (count > 2) message = 'In the clouds ⛅';
-      else if (count > 0) message = 'We have liftoff 🚀';
-      else message = 'Ready for launch';
-
-      return {
-        count,
-        message,
-      };
+    complete: async ({ id, listId }, aspen) => {
+      const all = await aspen.getView('all', { list: listId });
+      const todo = all.find((t: any) => t.id === id);
+      if (todo && !todo.done) {
+        await aspen.appendToLog(
+          {
+            type: 'status_change',
+            todoId: id,
+            isDone: true,
+          },
+          { list: listId },
+        );
+      }
     },
   },
 };

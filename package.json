@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@aspen.cloud/agent-typings": "^0.0.1"
+    "@aspen.cloud/agent-typings": "^0.0.5"
+  },
+  "dependencies": {
+    "nanoid": "^3.1.29"
   }
 }
