@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@aspen.cloud/agent-typings@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@aspen.cloud/agent-typings/-/agent-typings-0.0.5.tgz#2aaba76272a06a6f2d6d0923fe70e57a76816e62"
-  integrity sha512-OppYyEGoSB1H907h/5rjIepKagPgcnymGvqTmCehh/E+KL7AccvCHVRYY5L5zAXh0HjqVeK4VujIOfpHnNT4LA==
+"@aspen.cloud/agent-typings@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@aspen.cloud/agent-typings/-/agent-typings-0.0.6.tgz#38c6a05b017d30db70e6f8f113962cf9647b6b10"
+  integrity sha512-F1Qg6AyYG6BaAMYx3DpG/9CivXCyTjTekStSuySulZoR7Gz/XzNwqH9H99XT7GSm5UZEEAk7l+1bIOqntHwXeQ==
 
 nanoid@^3.1.29:
   version "3.1.30"
