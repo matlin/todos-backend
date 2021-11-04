@@ -1,7 +1,6 @@
 {
-  "name": "Simple Todos",
-  "source": "todos",
-  "type": "agent"
-
-  // "buildDirectory": "./dist" /* Specify where the build output will go */
+  "title": "Simple Todos",
+  "name": "todos",
+  "type": "agent",
+  "pathToDeploy": "./deploy"
 }

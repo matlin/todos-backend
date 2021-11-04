@@ -1,10 +1,14 @@
 {
-  "name": "aspen-agent-typescript-starter",
+  "name": "aspen-todos-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./deploy/todos.bundle.js",
   "license": "MIT",
+"scripts": {
+  "build": "esbuild src/index.ts --bundle --format=iife --global-name=agent --minify --outfile=./deploy/todos.bundle.js"
+},
   "devDependencies": {
-    "@aspen.cloud/agent-typings": "^0.0.6"
+    "@aspen.cloud/agent-typings": "^0.1.4",
+    "esbuild": "^0.13.12"
   },
   "dependencies": {
     "nanoid": "^3.1.29"
