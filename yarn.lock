@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@aspen.cloud/agent-typings@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@aspen.cloud/agent-typings/-/agent-typings-0.1.6.tgz#e4f80d40990ed6b23b388b6c8f6ce9c37c50fcfd"
-  integrity sha512-e741177WIdJ3o4XliARIhfaeuoPUcErDYZm8HWQy5esaNwevVKcKl5gpgQJCHIVvwmXa/IXJ4vHJ52LJoXa8vw==
+"@aspen.cloud/agent-typings@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@aspen.cloud/agent-typings/-/agent-typings-0.1.7.tgz#9d3db158275446110810905a3bbd8dd5cb749746"
+  integrity sha512-aj0qnVEFvlbwuJBuRJyfVGkoEWGDlILsjB9SKFJOGQyofPXfFp2b/6xWUM3qPhrSWOw0qrlqqqWG+wnpHoxzLA==
   dependencies:
     node-fetch "^3.0.0"
 

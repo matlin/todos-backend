@@ -71,11 +71,11 @@ const agent: Agent = {
   },
   actions: {
     add: async ({ message, list }, aspen) => {
-      await aspen.appendToLog(
+      await aspen.pushEvent(
+        'todo',
         {
           message,
           id: Math.floor(Math.random() * 1e9),
-          type: 'todo',
           listId: list,
         },
         {
@@ -88,9 +88,9 @@ const agent: Agent = {
       const all = await aspen.getView('all', { list: listId });
       const todo = all.find((t: any) => t.id === id);
       if (todo && !todo.done) {
-        await aspen.appendToLog(
+        await aspen.pushEvent(
+          'status_change',
           {
-            type: 'status_change',
             todoId: id,
             isDone: true,
           },

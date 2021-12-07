@@ -4,10 +4,10 @@
   "main": "./deploy/todos.bundle.js",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --format=esm --global-name=agent --minify --outfile=./deploy/todos.bundle.js"
+    "build": "esbuild src/index.ts --bundle --format=iife --global-name=agent --minify --outfile=./deploy/todos.bundle.js"
   },
   "devDependencies": {
-    "@aspen.cloud/agent-typings": "^0.1.6",
+    "@aspen.cloud/agent-typings": "^0.1.7",
     "esbuild": "^0.13.12"
   },
   "dependencies": {
