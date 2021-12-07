@@ -7,8 +7,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@aspen.cloud"]
+    "typeRoots": ["./node_modules/@types", "./node_modules/@aspen.cloud"],
+    "declaration": true,
+    "outDir": "deploy/"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
